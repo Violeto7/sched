@@ -10,7 +10,11 @@ class Job {
         int id;
 
         void Run(){
-            for( int i = 0; i<Length-work_done; ++i){}
+            int i = 0;
+            while(i < Length - work_done && !is_done()){
+                ++i;
+                ++work_done;
+            }
         }
         Job(int m, int k, int length, int i){
             M = m;
@@ -21,7 +25,7 @@ class Job {
             deadline_missed = false;
         }
         long get_length(){return Length;}
-        
+        bool is_done(){return work_done == Length;}
         bool dl_missed(){return deadline_missed;}
         void set_missed(bool b){deadline_missed = b;}
         
